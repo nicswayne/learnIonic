@@ -1,0 +1,7 @@
+{
+  "name": "learnIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
