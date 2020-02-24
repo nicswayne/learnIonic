@@ -1,0 +1,12 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "learnIonic",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {},
+  "server": {
+    "url": "http://10.1.3.170:8101",
+    "cleartext": true
+  }
+}

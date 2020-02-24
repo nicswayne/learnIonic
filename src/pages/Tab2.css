@@ -1,3 +1,23 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.avatar-wrapper{
+  height: 68px;
+}
+
+.avatar {
+  font-size: 64px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.ripple-parent {
+  position: relative;
+}
+
+.super-tall {
+  height: 3000px
+}
