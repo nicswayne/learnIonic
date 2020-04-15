@@ -18,10 +18,10 @@ import {
   IonFab,
   IonRippleEffect
 } from '@ionic/react';
-import './Tab2.css';
+import './ProfileEdit.css';
 import { personCircleSharp } from 'ionicons/icons';
 
-const Tab2: React.FC = () => {
+const ProfileEdit: React.FC = () => {
   const [name, updateName] = useState('')
   const [email, updateEmail] = useState('')
   const [password, updatePassword] = useState('')
@@ -98,4 +98,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default ProfileEdit;

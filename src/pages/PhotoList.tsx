@@ -12,10 +12,10 @@ import {
   IonActionSheet
 } from '@ionic/react';
 import { trash, close, pencil } from 'ionicons/icons';
-import './Tab1.css';
+import './PhotoList.css';
 import { Photo, usePhotoGallery } from '../hooks/usePhotoGallery';
 
-const Tab1: React.FC<{ update: number }> = ({ update }) => {
+const PhotoList: React.FC<{ update: number }> = ({ update }) => {
   const [photoToDelete, setPhotoToDelete] = useState<Photo>();
   const { deletePhoto, loadSaved, photos } = usePhotoGallery();
 
@@ -67,4 +67,4 @@ const Tab1: React.FC<{ update: number }> = ({ update }) => {
   );
 };
 
-export default Tab1;
+export default PhotoList;

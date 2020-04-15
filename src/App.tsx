@@ -9,11 +9,13 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { camera, imagesOutline, personCircleOutline } from 'ionicons/icons';
+import { camera, imagesOutline, personCircleOutline, peopleCircleOutline, mailOutline } from 'ionicons/icons';
 import styled from 'styled-components'
 import { usePhotoGallery } from './hooks/usePhotoGallery';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
+import ContactSearch from './pages/ContactSearch';
+import EmailContact from './pages/EmailContact';
+import PhotoList from './pages/PhotoList';
+import ProfileEdit from './pages/ProfileEdit';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -60,21 +62,29 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/tab1" render={(props) => <Tab1 update={updatePhotoGallery} {...props} />} exact={true} />
-            <Route path="/tab2" component={Tab2} exact={true} />
-            <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+            <Route path="/photoList" render={(props) => <PhotoList update={updatePhotoGallery} {...props} />} exact={true} />
+            <Route path="/profileEdit" component={ProfileEdit} exact={true} />
+            <Route path="/contactSearch" component={ContactSearch} exact={true} />
+            <Route path="/emailContact" component={EmailContact} exact={true} />
+            <Route path="/" render={() => <Redirect to="/photoList" />} exact={true} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="tab1" href="/tab1">
+            <IonTabButton tab="photoList" href="/photoList">
               <IonIcon icon={imagesOutline} />
+            </IonTabButton>
+            <IonTabButton tab="emailContact" href="/emailContact">
+              <IonIcon icon={mailOutline} />
             </IonTabButton>
             <IonTabButton onClick={() => takePhoto()}>
               <CircleButton>
                 <IonIcon size="20px" icon={camera}></IonIcon>
               </CircleButton>
             </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
+            <IonTabButton tab="profileEdit" href="/profileEdit">
               <IonIcon icon={personCircleOutline} />
+            </IonTabButton>
+            <IonTabButton tab="contactSearch" href="/contactSearch">
+              <IonIcon icon={peopleCircleOutline} />
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
