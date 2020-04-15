@@ -6,7 +6,7 @@
   "webDir": "build",
   "cordova": {},
   "server": {
-    "url": "http://10.1.3.170:8101",
+    "url": "http://10.0.0.7:8100",
     "cleartext": true
   }
 }
