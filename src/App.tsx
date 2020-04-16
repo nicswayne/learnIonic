@@ -9,7 +9,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { camera, imagesOutline, personCircleOutline, peopleCircleOutline, mailOutline } from 'ionicons/icons';
+import { camera, imagesOutline, personCircleOutline, mailOutline, callOutline } from 'ionicons/icons';
 import styled from 'styled-components'
 import { usePhotoGallery } from './hooks/usePhotoGallery';
 import ContactSearch from './pages/ContactSearch';
@@ -80,11 +80,11 @@ const App: React.FC = () => {
                 <IonIcon size="20px" icon={camera}></IonIcon>
               </CircleButton>
             </IonTabButton>
+            <IonTabButton tab="contactSearch" href="/contactSearch">
+              <IonIcon icon={callOutline} />
+            </IonTabButton>
             <IonTabButton tab="profileEdit" href="/profileEdit">
               <IonIcon icon={personCircleOutline} />
-            </IonTabButton>
-            <IonTabButton tab="contactSearch" href="/contactSearch">
-              <IonIcon icon={peopleCircleOutline} />
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

@@ -13,8 +13,11 @@ import {
   IonRippleEffect,
   IonCard,
   IonCardContent,
-  IonListHeader
+  IonListHeader,
+  IonIcon
 } from '@ionic/react';
+import { sendOutline } from 'ionicons/icons';
+import './EmailContact.css';
 
 const EmailContact: React.FC = () => {
   const [emailsList, setEmailsList] = useState<any[]>([])
@@ -73,8 +76,9 @@ const EmailContact: React.FC = () => {
                 <IonItem>
                   {email.type ?? '(no type entered)'}
                 </IonItem>
-                <IonItem>
-                  {email.value}
+                <IonItem className="email-value">
+                  {email.value ?? 'no email'}
+                  {email.value && <IonIcon className="send-icon" icon={sendOutline} size="small" />}
                 </IonItem>
               </IonCardContent>
             </IonCard>

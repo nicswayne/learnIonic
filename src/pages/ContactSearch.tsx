@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Contacts, Contact } from '@ionic-native/contacts';
+import { Contacts, Contact, IContactField } from '@ionic-native/contacts';
+import { CallNumber } from '@ionic-native/call-number';
 import {
   IonContent,
   IonHeader,
@@ -12,9 +13,11 @@ import {
   IonButton,
   IonRippleEffect,
   IonCard,
-  IonCardContent
+  IonCardContent,
+  IonIcon
 } from '@ionic/react';
 import './ContactSearch.css';
+import { callOutline } from 'ionicons/icons';
 
 const ContactSearch: React.FC = () => {
   const [contactList, updateContactList] = useState<Contact[]>([]);
@@ -32,16 +35,13 @@ const ContactSearch: React.FC = () => {
     })
   }
 
-  function getPhoneNumber(numbers: any[]) {
-    const mobile = numbers.find(x => x.type === 'mobile')
-    if (mobile.value) {
-      return mobile.value
+  function callContact(number: string | undefined) {
+    console.log(number);
+    if (!number) {
+      return;
     }
-    const home = numbers.find(x => x.type === 'home')
-    if (home.value) {
-      return home.value
-    }
-    return ''
+
+    CallNumber.callNumber(number, true)
   }
 
   return (
@@ -64,9 +64,12 @@ const ContactSearch: React.FC = () => {
                 <IonItem>
                   {contact.name.formatted}
                 </IonItem>
-                <IonItem>
-                  {getPhoneNumber(contact.phoneNumbers)}
-                </IonItem>
+                {!!contact.phoneNumbers.length && contact.phoneNumbers.map((phoneNumber) => (
+                  <IonItem className="phone-value" onClick={() => callContact(phoneNumber.value)}>
+                    {`${phoneNumber.type}: ${phoneNumber.value}`}
+                    <IonIcon className="call-icon" icon={callOutline} size="small" />
+                  </IonItem>
+                ))}
               </IonCardContent>
             </IonCard>
           ))}
