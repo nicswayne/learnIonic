@@ -2,12 +2,11 @@ ion-content ion-toolbar {
   --background: translucent;
 }
 
-.phone-value {
+.email-value{
   position: relative;
-  padding-left: 20px;
 }
 
-.call-icon {
+.send-icon{
   position: absolute;
   right: 0;
 }
