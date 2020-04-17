@@ -43,7 +43,7 @@ const EmailContact: React.FC = () => {
 
   return (
     <IonPage>
-      <Menu title="emailContact" />
+      <Menu title="Email Contact" />
       <IonContent>
         <IonButton className="ripple-parent" type="submit" expand="block" onClick={selectContact}>
           Select Contact
