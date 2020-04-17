@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -36,10 +36,6 @@ const ProfileEdit: React.FC = () => {
     console.log('gender', gender);
   }
 
-  function scrollToMiddle(target: Element) {
-    target.scrollIntoView({ block: "center", behavior: "smooth" })
-  }
-
   return (
     <IonPage>
       <IonHeader>
@@ -53,7 +49,6 @@ const ProfileEdit: React.FC = () => {
         </IonAvatar>
         <form onSubmit={handleSubmit}>
           <IonList>
-          {/* <IonList className="super-tall"> */}
             <IonItem>
               <IonLabel position="stacked" >Name</IonLabel>
               <IonInput required autoCapitalize="on" name="name" placeholder="Name" value={name} onInput={(e: any) => updateName(e.target.value)}></IonInput>

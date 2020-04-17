@@ -3,10 +3,7 @@ import { Contacts, Contact } from '@ionic-native/contacts';
 import { EmailComposer } from '@ionic-native/email-composer';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonList,
   IonItem,
   IonButton,
@@ -18,6 +15,7 @@ import {
 } from '@ionic/react';
 import { sendOutline } from 'ionicons/icons';
 import './EmailContact.css';
+import Menu from '../components/Menu';
 
 const EmailContact: React.FC = () => {
   const [emailsList, setEmailsList] = useState<any[]>([])
@@ -45,11 +43,7 @@ const EmailContact: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Select a Contact</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Menu title="emailContact" />
       <IonContent>
         <IonButton className="ripple-parent" type="submit" expand="block" onClick={selectContact}>
           Select Contact

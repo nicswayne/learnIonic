@@ -22,6 +22,7 @@ export function usePhotoGallery() {
 
   useEffect(() => {
     loadSaved();
+    // eslint-disable-next-line
   }, [get, readFile]);
 
   async function loadSaved() {

@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { Contacts, Contact, IContactField } from '@ionic-native/contacts';
+import { Contacts, Contact } from '@ionic-native/contacts';
 import { CallNumber } from '@ionic-native/call-number';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonInput,
   IonList,
   IonItem,
@@ -18,6 +15,7 @@ import {
 } from '@ionic/react';
 import './ContactSearch.css';
 import { callOutline } from 'ionicons/icons';
+import Menu from '../components/Menu';
 
 const ContactSearch: React.FC = () => {
   const [contactList, updateContactList] = useState<Contact[]>([]);
@@ -46,11 +44,7 @@ const ContactSearch: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Contacts</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Menu title="Call Contact" />
       <IonContent>
         <IonInput required autoCapitalize="off" name="search" placeholder="Search for Contact" onInput={(e: any) => updateContactSearch(e.target.value)}></IonInput>
         <IonButton className="ripple-parent" type="submit" expand="block" onClick={searchContacts}>

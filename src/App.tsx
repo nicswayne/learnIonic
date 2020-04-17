@@ -9,13 +9,14 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { camera, imagesOutline, personCircleOutline, mailOutline, callOutline } from 'ionicons/icons';
+import { camera, imagesOutline, mailOutline, callOutline, calendarOutline } from 'ionicons/icons';
 import styled from 'styled-components'
 import { usePhotoGallery } from './hooks/usePhotoGallery';
 import ContactSearch from './pages/ContactSearch';
 import EmailContact from './pages/EmailContact';
 import PhotoList from './pages/PhotoList';
 import ProfileEdit from './pages/ProfileEdit';
+import CalendarEvent from './pages/CalendarEvent';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -55,6 +56,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     setUpdate(updatePhotoGallery + 1)
+    // eslint-disable-next-line
   }, [photos.length])
 
   return (
@@ -66,6 +68,7 @@ const App: React.FC = () => {
             <Route path="/profileEdit" component={ProfileEdit} exact={true} />
             <Route path="/contactSearch" component={ContactSearch} exact={true} />
             <Route path="/emailContact" component={EmailContact} exact={true} />
+            <Route path="/calendarEvent" component={CalendarEvent} exact={true} />
             <Route path="/" render={() => <Redirect to="/photoList" />} exact={true} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
@@ -83,8 +86,8 @@ const App: React.FC = () => {
             <IonTabButton tab="contactSearch" href="/contactSearch">
               <IonIcon icon={callOutline} />
             </IonTabButton>
-            <IonTabButton tab="profileEdit" href="/profileEdit">
-              <IonIcon icon={personCircleOutline} />
+            <IonTabButton tab="calendarEvent" href="/calendarEvent">
+              <IonIcon icon={calendarOutline} />
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
