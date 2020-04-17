@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -16,7 +16,8 @@ import {
   IonRadioGroup,
   IonRadio,
   IonFab,
-  IonRippleEffect
+  IonRippleEffect,
+  IonToast
 } from '@ionic/react';
 import './ProfileEdit.css';
 import { personCircleSharp } from 'ionicons/icons';
@@ -27,17 +28,11 @@ const ProfileEdit: React.FC = () => {
   const [password, updatePassword] = useState('')
   const [birthdate, updateBirthdate] = useState('')
   const [gender, updateGender] = useState('')
+  const [showToast, updateShowToast] = useState(false)
 
   function handleSubmit(e: any) {
     e.preventDefault()
-    console.log('name', name);
-    console.log('password', password);
-    console.log('birthdate', birthdate);
-    console.log('gender', gender);
-  }
-
-  function scrollToMiddle(target: Element) {
-    target.scrollIntoView({ block: "center", behavior: "smooth" })
+    updateShowToast(true)
   }
 
   return (
@@ -53,7 +48,6 @@ const ProfileEdit: React.FC = () => {
         </IonAvatar>
         <form onSubmit={handleSubmit}>
           <IonList>
-          {/* <IonList className="super-tall"> */}
             <IonItem>
               <IonLabel position="stacked" >Name</IonLabel>
               <IonInput required autoCapitalize="on" name="name" placeholder="Name" value={name} onInput={(e: any) => updateName(e.target.value)}></IonInput>
@@ -93,6 +87,13 @@ const ProfileEdit: React.FC = () => {
             </IonButton>
           </IonFab>
         </form>
+        <IonToast
+          isOpen={showToast}
+          position="top"
+          onDidDismiss={() => updateShowToast(false)}
+          message="Your profile has been saved. (but not really)"
+          duration={2000}
+        />
       </IonContent>
     </IonPage>
   );

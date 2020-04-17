@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonGrid,
   IonRow,
   IonCol,
   IonImg,
-  IonActionSheet
+  IonActionSheet,
+  IonText
 } from '@ionic/react';
-import { trash, close, pencil } from 'ionicons/icons';
-import './PhotoList.css';
+import { trash, close } from 'ionicons/icons';
 import { Photo, usePhotoGallery } from '../hooks/usePhotoGallery';
+import './PhotoList.css'
+import Menu from '../components/Menu';
 
 const PhotoList: React.FC<{ update: number }> = ({ update }) => {
   const [photoToDelete, setPhotoToDelete] = useState<Photo>();
@@ -21,16 +20,19 @@ const PhotoList: React.FC<{ update: number }> = ({ update }) => {
 
   useEffect(() => {
     loadSaved()
+    // eslint-disable-next-line
   }, [update])
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Photo Gallery</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Menu title="Photo Gallery" />
       <IonContent>
+        {!photos.length &&
+          <div className="empty-state">
+            <IonText> No Photos!</IonText>
+            <IonText> Click the camera icon to take a photo</IonText>
+          </div>
+        }
         <IonGrid>
           <IonRow>
             {photos.map((photo, index) => (
@@ -53,9 +55,6 @@ const PhotoList: React.FC<{ update: number }> = ({ update }) => {
               }
             }
           }, {
-          //   text: 'Edit',
-          //   icon: pencil
-          // }, {
             text: 'Cancel',
             icon: close,
             role: 'cancel'
